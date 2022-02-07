@@ -23,12 +23,12 @@ VALUES
 ('Joey', 'Perez', 1, 4),
 ('Trey', 'Hall', 2, 4),
 ('Karl', 'Kaiser', 1, 4),
-('Ismael', 'Valadez', 3, 0),
+('Ismael', 'Valadez', 3, NULL),
 ('Crystal', 'Devos', 5, 7),
 ('Mark', 'Ramos', 4, 7),
-('Joe', 'Garza', 6, 0),
+('Joe', 'Garza', 6, NULL),
 ('Tom', 'Hill', 7, 9),
-('Jimmy', 'Emmerit', 8, 0),
+('Jimmy', 'Emmerit', 8, NULL),
 ('Roger', 'Moore', 9, 12),
 ('Bill', 'Duvall', 9, 12),
-('Nancy', 'Hutton', 10, 0);
+('Nancy', 'Hutton', 10, NULL);
