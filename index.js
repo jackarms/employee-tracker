@@ -12,26 +12,57 @@ const db = mysql.createConnection(
   console.log("Connected to the employees database.")
 );
 
-db.query(`SHOW ROWS`, (err, rows) => {
-  console.log(rows);
-});
+inquirer
+  .prompt([
+    {
+      name: "initial_options",
+      type: "list",
+      message: "What would you like to do?",
+      choices: [
+        "View all departments",
+        "View all roles",
+        "View all employees",
+        "Add a department",
+        "Add a role",
+        "Add an employee",
+        "Update an employee role",
+      ],
+    },
+  ])
+  .then((answers) => {
+    if (answers.initial_options == "View all departments") {
+      viewAllDepartments();
+    } else if (answers.initial_options == "View all roles") {
+      viewAllRoles();
+    } else if (answers.initial_options == "View all employees") {
+      viewAllEmployees();
+    }
+  });
 
-// inquirer
-//   .prompt([
-//     {
-//       name: "initial_options",
-//       type: "list",
-//       message: "What would you like to do?",
-//       choices: [
-//         "View all departments",
-//         "View all employees",
-//         "Add a department",
-//         "Add a role",
-//         "Add an employee",
-//         "Update an employee role",
-//       ],
-//     },
-//   ])
-//   .then((answers) => {
-//     console.log(answers);
-//   });
+const viewAllDepartments = function () {
+  db.query(`SELECT department_name FROM department;`, (err, rows) => {
+    console.table(rows);
+  });
+};
+
+const viewAllRoles = function () {
+  db.query(
+    `SELECT roles.*, department.department_name
+  FROM roles
+  LEFT JOIN department ON roles.department_id = department.id`,
+    (err, rows) => {
+      console.table(rows);
+    }
+  );
+};
+
+const viewAllEmployees = function () {
+  db.query(
+    `SELECT employee.*, roles.title
+  FROM employee
+  LEFT JOIN roles ON employee.role_id = roles.id`,
+    (err, rows) => {
+      console.table(rows);
+    }
+  );
+};
