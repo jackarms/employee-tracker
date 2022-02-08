@@ -149,9 +149,10 @@ const viewAllRoles = function () {
 
 const viewAllEmployees = function () {
   db.query(
-    `SELECT employee.*, roles.title
-  FROM employee
-  LEFT JOIN roles ON employee.role_id = roles.id;`,
+    `SELECT employee.*, roles.title, roles.salary, department.department_name AS department 
+    FROM employee
+  LEFT JOIN roles ON employee.role_id = roles.id
+  LEFT JOIN department ON roles.department_id = department.id`,
     (err, rows) => {
       if (err) {
         console.log(err);
