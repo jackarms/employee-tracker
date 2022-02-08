@@ -7,3 +7,5 @@ JavaScript, Node.JS, Inquirer, MySQL and MySQL2, C.Table
 https://github.com/jackarms/employee-tracker
 ## Contributions
 John Armstrong
+
+https://watch.screencastify.com/v/ojyluWwGeO2uJMtPBctw
